@@ -15,6 +15,9 @@ export class ImageController {
   getResizeImage(@Query() query) {
     let inputPath = join(__dirname, '..', '..', '..', 'public', 'img', '1.jpg');
     let outputPath = join(__dirname, '..', '..', '..', 'public', 'img', 'test.jpg');
-    this.imageService.resizeImage(inputPath, outputPath, 100, 100);
+    let size = query.size;
+    let width = +query.width;
+    let height = +query.height;
+    this.imageService.resizeImage(inputPath, outputPath, width, height);
   }
 }
