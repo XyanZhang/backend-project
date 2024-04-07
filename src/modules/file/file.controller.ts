@@ -7,11 +7,6 @@ import { multerConfig } from "@/config/multerConfig";
 export class FileController {
   constructor(private readonly fileService: FileService) {}
 
-  @Get('file')
-  getHello(): string {
-    return this.fileService.getHello();
-  }
-
   @Post('upload')
   @UseInterceptors(FileInterceptor('file', multerConfig))
   uploadFile(@UploadedFile() file:any) {
@@ -19,8 +14,4 @@ export class FileController {
     // 生成文件
     return this.fileService.create(file);
   }
-  // @Get('file/upload')
-  // uploadFile(): string {
-  //   return this.fileService.uploadFile();
-  // }
 }
